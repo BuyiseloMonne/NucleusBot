@@ -1,4 +1,5 @@
 const axios = require('axios');
+require('dotenv').config();
 
 // Function to get a response from OpenAI API
 async function getChatResponse(userMessage) {
