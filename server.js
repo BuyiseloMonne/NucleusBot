@@ -22,7 +22,7 @@ let scrapedData = {};
 
 // URLs to scrape
 const urls = [
-  'https://edu.gcfglobal.org/en/computerbasics/what-is-a-computer/1/'
+  'https://www.nucleusdevs.com/pricing'
 ];
 
 // Route to perform scraping
