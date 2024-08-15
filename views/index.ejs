@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NucleusBot</title>
+</head>
+<body>
+    <h1>NucleusBot</h1>
+    <form id="chatForm">
+        <label for="userMessage"></label>
+        <input type="text" id="userMessage" name="message" placeholder="Message NucleusBot" required>
+        <button type="submit">Send</button>
+    </form>
+</br>
+    <div id="response">
+       
+    </div>
+
+    <script>
+        document.getElementById('chatForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const message = document.getElementById('userMessage').value;
+            const responseElement = document.getElementById('response');
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                responseElement.innerText = `NucleusBot Response: ${data.reply}`;
+                
+            } catch (error) {
+                responseElement.innerText = 'Error communicating with server';
+            }
+        });
+    </script>
+</body>
+</html>
